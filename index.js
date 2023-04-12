@@ -20,7 +20,9 @@ client.on('ready', _ => {
 })
 
 client.on('messageCreate', (message) => {
-  console.log(message.content)
+  if (message.author.bot) return;
+  if (message.channel.id !== process.env.DISCORD_CHANNEL_ID) return;
+  if (message.content.startsWith('!')) return;
 })
 
 client.login(process.env.TOKEN)
